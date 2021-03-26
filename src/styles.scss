@@ -1,0 +1,9 @@
+$font-stack: "Roboto", Sans-serif;
+$primary-color: #00F987;
+
+body {
+    font-family: 100% $font-stack;
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: $primary-color;
+}
