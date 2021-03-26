@@ -1,25 +1,31 @@
-<form class="form-signin">
-    <div class="text-center mb-4">
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-      <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-4 col-12"></div>
+    <div class="col-lg-4 col-12 text-center">
+      <form [formGroup]="checkoutForm" class="form-signin">
+        <div class="text-center mb-4">
+          <img class="mb-4" alt="logotipo BomTrato" src="../../assets/img/bom-trato-logo-177x44.png">
+          <p>Acesso o sistema de aprovações e processos da Bomtrato</p>
+        </div>
+        <div class="form-label-group text-left">
+          <label for="inputEmail">E-mail</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" formControlName="loginEmail" required autofocus>
+        </div>
+        <div class="form-label-group text-left mt-2">
+          <label for="inputPassword">Senha</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Senha" formControlName="loginPass" required>
+        </div>
+        <div *ngIf="loginRecused" class="alert alert-danger mt-3" role="alert">
+          E-mail ou senha incorretos
+        </div>        
+        <div class="checkbox mb-3 mt-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Lembrar-me
+          </label>
+        </div>
+        <button type="button" class="btn btn-lg btn-primary btn-block" (click)="authLogin()">Entrar</button>
+      </form>
     </div>
-
-    <div class="form-label-group">
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputEmail">Email address</label>
-    </div>
-
-    <div class="form-label-group">
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <label for="inputPassword">Password</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
-  </form>
+    <div class="col-lg-4 col-12"></div>
+  </div>
+</div>

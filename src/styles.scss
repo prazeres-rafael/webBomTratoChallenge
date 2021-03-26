@@ -5,5 +5,39 @@ body {
     font-family: 100% $font-stack;
     font-weight: 400;
     font-size: 1rem;
-    background-color: $primary-color;
+}
+
+h1 {
+    color: #0F0E0E !important;
+    font-family: "Space Mono", Sans-serif !important;
+    font-size: 44px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    line-height: 1.4em !important;
+}
+
+::selection {
+    background-color: #00ff75;
+    color: #000000;
+}
+
+.btn-primary {
+    font-family: "Roboto", Sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 3.3px;
+    fill: #231F20;
+    color: #231F20;
+    background-color: #00F987;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #000000;
+    border-radius: 25px 25px 25px 25px;
+    padding: 12px 33px 12px 33px;
+}
+
+
+.btn-primary:hover {
+    background-color: #FFFFFF;
+    color: #231F20;
 }
