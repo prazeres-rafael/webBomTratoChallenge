@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-lg-4 col-12"></div>
     <div class="col-lg-4 col-12 text-center">
-      <form [formGroup]="checkoutForm" class="form-signin">
+      <form [formGroup]="checkoutForm" class="form-signin" (keydown.enter)="authLogin()">
         <div class="text-center mb-4">
           <img class="mb-4" alt="logotipo BomTrato" src="../../assets/img/bom-trato-logo-177x44.png">
           <p>Acesso o sistema de aprovações e processos da Bomtrato</p>
@@ -28,4 +28,12 @@
     </div>
     <div class="col-lg-4 col-12"></div>
   </div>
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+          <div class="col-12 col-md">
+              <img class="mb-2" src="../../assets/img/bom-trato-logo-177x44.png" alt="logotipo Bomtrato">
+              <small class="d-block mb-3 text-muted">&copy; 2021</small>
+          </div>
+      </div>
+  </footer>
 </div>

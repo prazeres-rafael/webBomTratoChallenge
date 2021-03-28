@@ -1,1 +1,161 @@
-<p>process-screen works!</p>
+<div
+    class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow nav-bomtrato">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/process"><img class="mb-2" src="../../assets/img/bom-trato-logo-177x44.png"
+            alt="logotipo Bomtrato"></a></h5>
+    <a class="" href="/">
+        <fa-icon [icon]="faSingOutAlt" [styles]="{'font-size': '25px', 'color': 'black'}"></fa-icon>
+    </a>
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Processos</h1>
+    <p class="lead">Visualize, cadastre e edite seus processos.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="mr-auto col-lg-1 col-12">
+            <nav>
+                <div class="nav nav-tabs2 right" id="nav-tab" role="tablist">
+                    <a class="nav-item active mr-3" id="nav-bloco-tab" data-toggle="tab" [routerLink]="" (click)="goCard()"
+                        role="tab" aria-controls="nav-bloco" aria-selected="true">
+                        <fa-icon [icon]="faTh"></fa-icon>
+                    </a>
+                    <a class="nav-item" id="nav-table-tab" data-toggle="tab" [routerLink]="" role="tab" (click)="goTable()"
+                        aria-controls="nav-table" aria-selected="false">
+                        <fa-icon [icon]="faList"></fa-icon>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="ml-auto col-lg-3 col-12">
+            <a class="nav-item active mr-3" id="nav-bloco-tab" data-toggle="tab" href="process-add" role="tab"
+                aria-controls="nav-bloco" aria-selected="true">
+                <button type="button" class="btn btn-lg btn-primary btn-block"><fa-icon [icon]="faPlus"></fa-icon> Adicionar</button>
+            </a>
+        </div>
+    </div>
+    <div class="tab-content2 mt-4" id="nav-tabContent">
+        <div [ngClass]="{'hide-element':card}" id="nav-bloco" role="tabpanel" aria-labelledby="nav-bloco-tab">
+            <div class="row mb-2">
+                <div class="col-12 col-md-3 col-sm-6 mb-4" *ngFor="let process of processInfo">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title pricing-card-title">{{process.process_number}}</h5>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><b>Valor da Causa:</b> {{ process.value | number:'':'pt-BR' }}</li>
+                                <li><b>Escritório:</b> {{process.office}}</li>
+                                <li><b>Reclamante:</b> {{process.complainant}}</li>
+                            </ul>
+                            <a class="mr-2" [routerLink]="" (click)="goToEdit(process.id)">
+                                <fa-icon [icon]="faPen"></fa-icon>
+                            </a>
+                            <a class="mr-2" [routerLink]="">
+                                <fa-icon [icon]="faThumbsDown" [styles]="{'color': 'red'}"></fa-icon>
+                            </a>
+                            <a class="mr-2" [routerLink]="">
+                                <fa-icon [icon]="faThumbsUp" [styles]="{'color': 'green'}"></fa-icon>
+                            </a>
+                            <a class="mr-2" [routerLink]=""
+                                (click)="openForm(process.process_number, process.value, process.complainant)">
+                                <fa-icon [icon]="faComments"></fa-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="{'hide-element':table}" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Número do Processo</th>
+                        <th scope="col">Valor da Causa</th>
+                        <th scope="col">Escritório</th>
+                        <th scope="col">Nome do Reclamante</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let process of processInfo">
+                        <th scope="row">{{process.process_number}}</th>
+                        <td>{{ process.value | number:'':'pt-BR' }}</td>
+                        <td>{{process.office}}</td>
+                        <td>{{process.complainant}}</td>
+                        <td>
+                            <a class="mr-2" [routerLink]="" (click)="goToEdit(process.id)">
+                                <fa-icon [icon]="faPen"></fa-icon>
+                            </a>
+                            <a class="mr-2" [routerLink]="">
+                                <fa-icon [icon]="faThumbsDown" [styles]="{'color': 'red'}"></fa-icon>
+                            </a>
+                            <a class="mr-2" [routerLink]="">
+                                <fa-icon [icon]="faThumbsUp" [styles]="{'color': 'green'}"></fa-icon>
+                            </a>
+                            <a class="mr-2" [routerLink]=""
+                                (click)="openForm(process.process_number, process.value, process.complainant)">
+                                <fa-icon [icon]="faComments" [styles]="{'color': 'green'}"></fa-icon>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img class="mb-2" src="../../assets/img/bom-trato-logo-177x44.png" alt="logotipo Bomtrato">
+                <small class="d-block mb-3 text-muted">&copy; 2021</small>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="chat-popup" id="myForm">
+    <form action="/action_page.php" class="form-container">
+        <p><b>Processo:</b> {{chatProcess}}</p>
+        <p><b>Reclamante:</b> {{chatComplainant}}</p>
+        <p><b>Valor:</b> {{chatValue}}</p>
+        <hr>
+        <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
+            style="overflow-y: scroll !important; height:400px !important;">
+            <div class="media media-chat"> <img class="avatar"
+                    src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                <div class="media-body">
+                    <p>Olá</p>
+                    <p>Precisamos falar sobre o seu processo!</p>
+                    <p class="meta"><time datetime="2018">23:58</time></p>
+                </div>
+            </div>
+            <div class="media media-meta-day">Today</div>
+            <div class="media media-chat media-chat-reverse">
+                <div class="media-body">
+                    <p>Oi!! Vamos lá!!</p>
+                    <p class="meta"><time datetime="2018">00:06</time></p>
+                </div>
+            </div>
+            <div class="media media-chat"> <img class="avatar"
+                    src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                <div class="media-body">
+                    <p>Vamos lá!!</p>
+                    <p class="meta"><time datetime="2018">00:07</time></p>
+                </div>
+            </div>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+            </div>
+        </div>
+        <div class="publisher bt-1 border-light">
+            <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+            <input class="publisher-input" type="text" placeholder="Digite aqui...">
+            <span class="publisher-btn file-group"> <i class="fa fa-paperclip file-browser"></i><input type="file"></span>
+            <a class="publisher-btn" href="#" data-abc="true"><i class="fa fa-smile"></i></a>
+            <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Enviar</button>
+        <button type="button" class="btn btn-lg btn-secundary btn-block" (click)="closeForm()">Fechar</button>
+    </form>
+</div>

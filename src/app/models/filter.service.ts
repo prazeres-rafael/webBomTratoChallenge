@@ -1,3 +1,4 @@
 export interface FilterService {
-    users: string;
+    users: string,
+    process: string
 }
