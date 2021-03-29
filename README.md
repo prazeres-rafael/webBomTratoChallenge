@@ -13,7 +13,7 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 ## Como executar
 
 <b>Json Server</b>:
-Executar os seguintes comandos:
+
 - Acessar o diretório dos arquivos (src\app\json-server)
 - $ json-server --watch -p 4000 .\process-list.json
 - $ json-server --watch -p 3000 .\login-user.json
