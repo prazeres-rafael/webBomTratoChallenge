@@ -1,5 +1,5 @@
 export interface LoginPage {
-    id: number,
-    email: string,
-    password: string
+    id: number;
+    email: string;
+    password: string;
 }

@@ -23,8 +23,7 @@ export class LoginScreenComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService
-  ) { 
-  }
+  ) {}
 
   ngOnInit(): void {
     this.clearForm();
@@ -34,7 +33,7 @@ export class LoginScreenComponent implements OnInit {
     this.checkoutForm = this.formBuilder.group({
       loginEmail: [''],
       loginPass: ['']
-    })
+    });
   }
 
   authLogin() {
@@ -45,8 +44,8 @@ export class LoginScreenComponent implements OnInit {
       (infoLogin: LoginPage) => {
         if (infoLogin) {
           this.userLogin = infoLogin;
-          if (this.email == infoLogin[0].email){
-            if (this.pass == infoLogin[0].password) {
+          if ( this.email === infoLogin[0].email) {
+            if (this.pass === infoLogin[0].password) {
               this.loginRecused = false;
               this.router.navigate(['/process']);
             } else {
@@ -57,7 +56,7 @@ export class LoginScreenComponent implements OnInit {
           }
         }
       }
-    )
+    );
   }
 
 }

@@ -27,8 +27,7 @@ export class ProcessEditComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private processService: ProcessService
-  ) { 
-  }
+  ) { }
 
   ngOnInit(): void {
     this.clearForm();
@@ -47,7 +46,7 @@ export class ProcessEditComponent implements OnInit {
           this.checkoutForm.get('process_complainant').setValue(this.processInfo.complainant);
         }
       }
-    )
+    );
   }
 
   clearForm() {
@@ -56,46 +55,45 @@ export class ProcessEditComponent implements OnInit {
       process_value: [''],
       process_office: [''],
       process_complainant: ['']
-    })
+    });
   }
 
-  editProcess(){
-    if(this.checkoutForm.get('process_number').value.length < 12) {
+  editProcess() {
+    if (this.checkoutForm.get('process_number').value.length < 12) {
       this.processNumberError = true;
     } else {
       this.processNumberError = false;
     }
-    if(this.checkoutForm.get('process_value').value <= 30000) {
+    if (this.checkoutForm.get('process_value').value <= 30000) {
       this.processValueError = true;
     } else {
       this.processValueError = false;
     }
-    if(this.checkoutForm.get('process_office').value.length == 0) {
+    if (this.checkoutForm.get('process_office').value.length === 0) {
       this.processOfficeError = true;
     } else {
       this.processOfficeError = false;
     }
-    if(this.checkoutForm.get('process_complainant').value.length == 0) {
+    if (this.checkoutForm.get('process_complainant').value.length === 0) {
       this.processComplainantError = true;
     } else {
       this.processComplainantError = false;
     }
-    
-    if (this.processNumberError == false && this.processValueError == false && this.processOfficeError == false && this.processComplainantError == false){
-      this.filter.product = { 
-        id: this.route.snapshot.paramMap.get('id'), 
+    if (this.processNumberError === false && this.processValueError === false &&
+      this.processOfficeError === false && this.processComplainantError === false) {
+      this.filter.product = { id: this.route.snapshot.paramMap.get('id'),
         process_number: this.checkoutForm.get('process_number').value,
         value: this.checkoutForm.get('process_value').value,
         office: this.checkoutForm.get('process_office').value,
         complainant: this.checkoutForm.get('process_complainant').value
-      }
+      };
       this.processService.editProcess(this.filter).subscribe(
         (infoProcess: ProcessPage) => {
           if (infoProcess) {
             this.router.navigate(['/process']);
           }
         }
-      )
+      );
     }
   }
 

@@ -37,37 +37,37 @@ export class ProcessAddComponent implements OnInit {
       process_value: [''],
       process_office: [''],
       process_complainant: ['']
-    })
+    });
   }
 
-  addProcess(){
-    if(this.checkoutForm.get('process_number').value.length < 12) {
+  addProcess() {
+    if (this.checkoutForm.get('process_number').value.length < 12) {
       this.processNumberError = true;
     } else {
       this.processNumberError = false;
     }
-    if(this.checkoutForm.get('process_value').value <= 30000) {
+    if (this.checkoutForm.get('process_value').value <= 30000) {
       this.processValueError = true;
     } else {
       this.processValueError = false;
     }
-    if(this.checkoutForm.get('process_office').value.length == 0) {
+    if (this.checkoutForm.get('process_office').value.length === 0) {
       this.processOfficeError = true;
     } else {
       this.processOfficeError = false;
     }
-    if(this.checkoutForm.get('process_complainant').value.length == 0) {
+    if (this.checkoutForm.get('process_complainant').value.length === 0) {
       this.processComplainantError = true;
     } else {
       this.processComplainantError = false;
     }
-    if (this.processNumberError == false && this.processValueError == false && this.processOfficeError == false && this.processComplainantError == false){
-      this.filter.product = { 
-        process_number: this.checkoutForm.get('process_number').value,
+    if (this.processNumberError === false && this.processValueError === false &&
+      this.processOfficeError === false && this.processComplainantError === false) {
+      this.filter.product = { process_number: this.checkoutForm.get('process_number').value,
         value: this.checkoutForm.get('process_value').value,
         office: this.checkoutForm.get('process_office').value,
         complainant: this.checkoutForm.get('process_complainant').value
-      }
+      };
       this.filter.process = 'process';
       this.processService.addProcess(this.filter).subscribe(
         (infoProcess: ProcessPage) => {
@@ -75,7 +75,7 @@ export class ProcessAddComponent implements OnInit {
             this.router.navigate(['/process']);
           }
         }
-      )
+      );
     }
   }
 

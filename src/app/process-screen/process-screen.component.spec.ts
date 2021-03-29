@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProcessScreenComponent } from './process-screen.component';
 
@@ -8,6 +9,7 @@ describe('ProcessScreenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ ProcessScreenComponent ]
     })
     .compileComponents();
@@ -19,7 +21,4 @@ describe('ProcessScreenComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

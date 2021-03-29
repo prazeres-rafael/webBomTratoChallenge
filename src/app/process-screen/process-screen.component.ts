@@ -28,7 +28,7 @@ export class ProcessScreenComponent implements OnInit {
   chatComplainant: string;
   card = false;
   table = true;
-  
+
   constructor(
     private router: Router,
     private processService: ProcessService
@@ -47,18 +47,18 @@ export class ProcessScreenComponent implements OnInit {
           this.processInfo = infoProcess;
         }
       }
-    )
+    );
   }
 
-  openForm(number, value, complainant) {
-    this.chatProcess = number;
-    this.chatValue = value;
-    this.chatComplainant = complainant;
-    document.getElementById("myForm").style.display = "block";
+  openForm(numberProcess, valueProcess, complainantProcess) {
+    this.chatProcess = numberProcess;
+    this.chatValue = valueProcess;
+    this.chatComplainant = complainantProcess;
+    document.getElementById('myForm').style.display = 'block';
   }
 
   closeForm() {
-    document.getElementById("myForm").style.display = "none";
+    document.getElementById('myForm').style.display = 'none';
   }
 
   goCard() {

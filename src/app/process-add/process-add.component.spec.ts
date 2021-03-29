@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { ProcessAddComponent } from './process-add.component';
 
 describe('ProcessAddComponent', () => {
@@ -8,6 +10,7 @@ describe('ProcessAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ ProcessAddComponent ]
     })
     .compileComponents();
@@ -19,7 +22,4 @@ describe('ProcessAddComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

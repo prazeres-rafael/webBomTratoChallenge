@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { routing } from './app.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import localePt from '@angular/common/locales/pt'
+import localePt from '@angular/common/locales/pt';
 import { HttpClientModule} from '@angular/common/http';
 import { ProcessScreenComponent } from './process-screen/process-screen.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,7 +14,7 @@ import { ProcessAddComponent } from './process-add/process-add.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { registerLocaleData } from '@angular/common';
 import { ProcessEditComponent } from './process-edit/process-edit.component';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 
 registerLocaleData(localePt);
 
@@ -43,4 +43,4 @@ registerLocaleData(localePt);
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
