@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FilterService } from '../models/filter.service';
+import { ProcessPage } from '../models/process';
+import { ProcessService } from '../services/process.service';
 
 @Component({
   selector: 'app-process-add',
@@ -16,12 +19,13 @@ export class ProcessAddComponent implements OnInit {
   processValueError = false;
   processOfficeError = false;
   processComplainantError = false;
+  filter = {} as FilterService;
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
-  ) { 
-  }
+    private formBuilder: FormBuilder,
+    private processService: ProcessService
+  ) { }
 
   ngOnInit(): void {
     this.clearForm();
@@ -58,7 +62,20 @@ export class ProcessAddComponent implements OnInit {
       this.processComplainantError = false;
     }
     if (this.processNumberError == false && this.processValueError == false && this.processOfficeError == false && this.processComplainantError == false){
-      this.router.navigate(['/process'])
+      this.filter.product = { 
+        process_number: this.checkoutForm.get('process_number').value,
+        value: this.checkoutForm.get('process_value').value,
+        office: this.checkoutForm.get('process_office').value,
+        complainant: this.checkoutForm.get('process_complainant').value
+      }
+      this.filter.process = 'process';
+      this.processService.addProcess(this.filter).subscribe(
+        (infoProcess: ProcessPage) => {
+          if (infoProcess) {
+            this.router.navigate(['/process']);
+          }
+        }
+      )
     }
   }
 

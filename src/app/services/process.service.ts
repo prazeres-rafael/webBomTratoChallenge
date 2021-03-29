@@ -23,10 +23,12 @@ export class ProcessService {
         return this.httpClient.get<ProcessPage>(this.baseUrl + filter.process)
     }
 
-    //editProcess(filter: FilterService): Observable<ProcessPage> {
-    //    return this.httpClient.post<ProcessPage>(this.baseUrl + filter.process, { value: '123' }).subscribe(data=> {
-    //        filter.users = data.process_number;
-    //    })
-    //}
+    addProcess(filter: FilterService): Observable<ProcessPage> {
+        return this.httpClient.post<ProcessPage>(this.baseUrl + filter.process, filter.product)
+    }
+
+    editProcess(filter: FilterService): Observable<ProcessPage> {
+        return this.httpClient.put<ProcessPage>(this.baseUrl + filter.process, filter.product)
+    }
 
 }

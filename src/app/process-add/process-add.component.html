@@ -45,17 +45,17 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Escritório</label>
-                                <input type="text" class="form-control" maxlength="50" mask="S{50}" formControlName="process_office" required>
-                                <div *ngIf="processValueError" class="alert alert-danger mt-3" role="alert">
+                                <input type="text" class="form-control" maxlength="50" mask="S* S* S* S*" formControlName="process_office" required>
+                                <div *ngIf="processOfficeError" class="alert alert-danger mt-3" role="alert">
                                     Digite o nome do escritório para prosseguir.
                                 </div>   
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Nome do reclamante</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" maxlength="100" mask="S{100}" id="username" formControlName="process_complainant" required>
+                                    <input type="text" class="form-control" maxlength="100" mask="S* S* S* S*" id="username" formControlName="process_complainant" required>
                                 </div>
-                                <div *ngIf="processValueError" class="alert alert-danger mt-3" role="alert">
+                                <div *ngIf="processComplainantError" class="alert alert-danger mt-3" role="alert">
                                     Digite o nome do reclamante para prosseguir.
                                 </div>   
                             </div>

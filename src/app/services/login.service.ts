@@ -13,7 +13,7 @@ export class LoginService {
 
     constructor(private httpClient: HttpClient) { }
 
-    baseUrl = environment.baseUrl;
+    baseUrl = environment.baseUrlLogin;
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })

@@ -1,4 +1,5 @@
 export interface FilterService {
     users: string,
-    process: string
+    process: string,
+    product: any
 }
