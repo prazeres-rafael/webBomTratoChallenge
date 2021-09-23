@@ -53,6 +53,3 @@ Tela do chat:
 
 Não há ação para as funcionalidades de Aprovar e Reprovar 
 
-
-## Testes Unitários:
-- Os testes unitários não foram entregues, devido a falta de conhecimento de testes mais complexos. (Atualmente não trabalho com eles, e precisaria de alguns dias para aprender e criar testes capazes de testar todo o sistema).
